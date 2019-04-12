@@ -1,4 +1,4 @@
-# A tornado based sample python webserver in a docker image
+### A tornado based sample python webserver in a docker image
 
 `web-server.py` is a sample python application that hosts a simple webserver that responds to `Get` requests http requests on `localhost:8888` with the hostname.
 
@@ -55,3 +55,17 @@ Google Container Registry stores its images on Google Cloud storage.
 Let's update the permissions on Google Cloud Storage to make our image repository publically accessible.
 
 ```shell
+gsutil defacl ch -u AllUsers:R gs://artifacts.${GCP_PROJECT}.appspot.com
+gsutil acl ch -r -u AllUsers:R gs://artifacts.${GCP_PROJECT}.appspot.com
+gsutil acl ch -u AllUsers:R gs://artifacts.${GCP_PROJECT}.appspot.com
+```
+
+The docker image can now be executed from any machine by running the following command
+```shell
+docker run -d -p 8888:8888 -h my-web-server gcr.io/${GCP_PROJECT}/py-web-server:v1l
+```
+
+Detailed Dockerfile reference is available [here](https://docs.docker.com/engine/reference/builder/).
+
+
+
