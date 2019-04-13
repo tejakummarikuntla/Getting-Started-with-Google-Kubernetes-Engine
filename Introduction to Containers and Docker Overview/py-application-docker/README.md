@@ -23,7 +23,7 @@ Our docker image will be built on top of an existing docker image `library/pytho
 
 3. Run the webserver
 ```shell
-docker run -d -p 8888:8888 -h my-web-server py-web-server:v1
+> docker run -d -p 8888:8888 -h my-web-server py-web-server:v1
 ```
 
 The webserver and all its dependencies including `python` and `tornado library` have been packaged into a single docker image that can now be shared with everyone.
